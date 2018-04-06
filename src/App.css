@@ -1,0 +1,50 @@
+.App {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.App-container {
+  width: 90vw;
+  max-width: 60rem;
+}
+
+.App-input-data-wrapper {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+}
+
+.App-input-container {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.App-color-bars-container {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 1rem auto;
+}
+
+.App-chart-wrapper {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  /*width: 90vw;
+  max-width: 60rem;*/
+  height: 250px;
+}
+
+@media only screen and (max-width: 30rem) {
+
+}

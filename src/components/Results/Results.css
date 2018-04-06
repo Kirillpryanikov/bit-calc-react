@@ -1,0 +1,59 @@
+.half-container {
+    width: 50%;
+}
+.input-flex-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+.result-flex-column {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    position: relative;
+}
+.result-flex-column:not(:first-child) {
+    margin-left: 1.2rem;
+}
+.css-input-title {
+    margin-bottom: .5rem;
+}
+.bottom-text {
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    font-size: .9rem;
+}
+.css-result {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 600;
+    font-size: 2rem;
+    height: 2.7rem;
+}
+.dropdown {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.dropdown-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.dropdown-trigger {
+    position: relative;
+    padding-right: 2rem;
+}
+.currency-name {
+    width: 5rem;
+    padding: 6px 5px;
+    background-color: white;
+    border: none;
+    border-bottom: 1px solid red;
+    z-index: 5;
+}

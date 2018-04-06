@@ -1,0 +1,67 @@
+.input-flex-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+.input-flex-row.input {
+    height: 2.7rem;
+}
+
+.css-input {
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    border: solid 1px #cccccc;
+    padding: .75rem;
+    font-size: .75rem;
+    margin-right: 0.5rem;
+}
+
+.css-input-title {
+    margin-bottom: .5rem;
+}
+.bay-amount {
+    width: 180px;
+    padding-right: 3.2rem;
+}
+.bay-amount-abs {
+    position: absolute;
+    /*top: 0;*/
+    font-weight: 500;
+    left: 8rem;
+}
+.time-period {
+    width: 120px;
+    padding-right: 3.5rem;
+}
+.time-period-abs {
+    position: absolute;
+    /*top: 0;*/
+    font-weight: 500;
+    left: 15.2rem;
+}
+.css-input:focus { outline:none; }
+
+.css-submit {
+    position: relative;
+    height: 100%;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    color: #000000;
+    font-size: .75rem;
+    background: #FFD54F;
+    padding: 13px 20px;
+    border: solid 1px #FFCA28;
+    outline: none;
+    text-decoration: none;
+    transition: all .3s;
+}
+
+.css-submit:hover {
+    background: #FFE082;
+    text-decoration: none;
+    border: solid 1px #FFD54F;
+}
