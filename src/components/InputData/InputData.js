@@ -5,9 +5,7 @@ import ExclamationCircle from '../../icons/exclamation-circle.svg';
 import {getCalculatedData} from '../../store/actions/calcData';
 import './InputData.css';
 
-const regExFloat = /^[0-9]+([.][0-9]{0,8})?|[.][0-9]{1,8}$/g;
-
-const isRequesting = true;
+const regExFloat = /^\d*(\.\d{0,8})?$/;
 
 class InputData extends React.Component {
 
@@ -27,6 +25,7 @@ class InputData extends React.Component {
 
         // Check errors
         if(event.currentTarget.name === 'BAYValue' && !regExFloat.test(event.currentTarget.value)) {
+            console.log('BAYValue false', event.currentTarget.name, !regExFloat.test(event.currentTarget.value));
             this.setState({errorText: 'Please enter a number in both fields'});
             return false;
         } else if (event.currentTarget.name === 'yearsValue' && !/^[0-9]+$/g.test(event.currentTarget.value)) {
@@ -40,32 +39,35 @@ class InputData extends React.Component {
 
     sendData(event) {
         event.preventDefault();
-        console.log(event.currentTarget[0], event.currentTarget.value);
-        console.log('submitted');
+        if (this.state.BAYValue === '' || this.state.yearsValue === '') {
+            this.setState({errorText: 'Please enter a number in both fields'});
+            return false;
+        }
         const data = {
             coins: this.state.BAYValue,
-            currency: 'usd',
+            currency: this.props.activeCurrency,
             period: parseInt(this.state.yearsValue)*12
         };
         this.props.getCalculatedData(data);
+        this.setState({errorText: ''});
     }
 
     render() {
         return (
             <div>
                 <div className="css-input-title">I own ... BAY and plan to hold for ... </div>
-                <form onSubmit={this.sendData} className="input-flex-row">
+                <form onSubmit={this.sendData} className="form-flex-row">
                     <div className="input-flex-row input">
-                        <input className="css-input bay-amount" name="BAYValue" onChange={(event, newValue) => this.onInput(event, newValue)} type="text"/>
+                        <input className={`css-input bay-amount ${this.state.errorText ? 'error' : ''}`} name="BAYValue" onChange={(event, newValue) => this.onInput(event, newValue)} type="text"/>
                         <span className="bay-amount-abs">BAY</span>
-                        <input className="css-input time-period" name="yearsValue" onChange={(event, newValue) => this.onInput(event, newValue)} type="text"/>
+                        <input className={`css-input time-period ${this.state.errorText ? 'error' : ''}`} name="yearsValue" onChange={(event, newValue) => this.onInput(event, newValue)} type="text"/>
                         <span className="time-period-abs">Years</span>
                     </div>
                     <div className="input-flex-row input">
                         {
-                            isRequesting ?
-                                <input className="css-submit" type="submit" value='Calculate Reward'/> :
-                                <div className="css-submit-loader" ><ButtonPreLoader/></div>
+                            this.props.isRequesting ?
+                                <div className="css-submit-loader" ><ButtonPreLoader/></div> :
+                                <input className="css-submit" type="submit" value='Calculate Reward'/>
                         }
                     </div>
                 </form>
@@ -82,7 +84,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-    isRequesting: state.calcData.isRequesting
+    isRequesting: state.calcData.isRequesting,
+    activeCurrency: state.calcData.activeCurrency,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InputData);

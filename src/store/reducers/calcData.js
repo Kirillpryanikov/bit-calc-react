@@ -4,6 +4,7 @@ import {
     GET_DATA_FAIL,
     SHOW_DROPDOWN,
     HIDE_DROPDOWN,
+    SET_CURRENCY,
     GET_CURRENCIES_FAIL,
     GET_CURRENCIES_REQUEST,
     GET_CURRENCIES_SUCCESS
@@ -15,9 +16,10 @@ const initialState = {
     graph: [],
     isDropdownOpen: false,
     currencies: [],
-    activeCurrency: '',
-    reward: '',
-    inCurrency: ''
+    activeCurrency: 'USD',
+    reward: 0,
+    inCurrency: 0,
+    total: 0
 
 };
 
@@ -29,13 +31,14 @@ export default function (state = initialState, action) {
                 isRequesting: true,
             };
         case GET_DATA_SUCCESS:
-            action.payload.graph.map(item => {
-                console.log(item);
+            const newGraph = action.payload.graph.map(item => {
+                item.date = moment(item.date).format('YY MMM');
+                return item;
             })
             return {
                 ...state,
                 isRequesting: false,
-                graph: action.payload.graph,
+                graph: newGraph,
                 inCurrency: action.payload.inCurrency,
                 reward: action.payload.reward,
                 total: action.payload.total
@@ -69,6 +72,13 @@ export default function (state = initialState, action) {
         case HIDE_DROPDOWN:
             return {
                 ...state,
+                isDropdownOpen: false
+            };
+        case SET_CURRENCY:
+            console.log('action', action);
+            return {
+                ...state,
+                activeCurrency: action.payload,
                 isDropdownOpen: false
             };
         default:

@@ -9,21 +9,6 @@ import {
     ResponsiveContainer
 } from 'recharts';
 
-const data = [
-    {month: 'Jan', tc: 25, sr: 0},
-    {month: 'Feb', tc: 27, sr: 0},
-    {month: 'Mar', tc: 29, sr: 1},
-    {month: 'Apr', tc: 32, sr: 2},
-    {month: 'May', tc: 34, sr: 3},
-    {month: 'Jun', tc: 38, sr: 4},
-    {month: 'Jul', tc: 42, sr: 5},
-    {month: 'Aug', tc: 46, sr: 6},
-    {month: 'Sep', tc: 50, sr: 7},
-    {month: 'Oct', tc: 57, sr: 8},
-    {month: 'Nov', tc: 65, sr: 9},
-    {month: 'Dec', tc: 75, sr: 11}
-];
-
 class Chart extends React.Component {
 
     constructor(props) {
@@ -38,7 +23,7 @@ class Chart extends React.Component {
     render() {
         return (
             <ResponsiveContainer>
-                <AreaChart data={data}
+                <AreaChart data={this.props.graph}
                            margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                     <defs>
                         <linearGradient id="colorTC" x1="0" y1="0" x2="0" y2="1">

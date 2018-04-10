@@ -5,6 +5,13 @@
     align-items: center;
     position: relative;
 }
+.form-flex-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
 .input-flex-row.input {
     height: 2.7rem;
 }
@@ -18,6 +25,18 @@
     padding: .75rem;
     font-size: .75rem;
     margin-right: 0.5rem;
+}
+
+.css-input:focus {
+    border: solid 1px skyblue;
+    outline: 1px solid skyblue;
+    box-shadow: 0 0 1px skyblue;
+}
+
+.css-input.error {
+    border: solid 1px #F44336;
+    outline: none;
+    box-shadow: 0 0 1px #F44336;
 }
 
 .css-input-title {
@@ -91,4 +110,27 @@
     justify-content: flex-start;
     align-items: center;
     height: 1.2rem;
+}
+
+@media screen and (max-width: 569px) {
+    .form-flex-row {
+        flex-flow: column nowrap;
+    }
+    .input-flex-row {
+        justify-content: space-between;
+        width: 100%;
+    }
+    .input-flex-row:last-of-type {
+        margin-top: .5rem;
+    }
+    .css-submit {
+        width: 100%;
+    }
+    .css-submit-loader {
+        width: 100%;
+    }
+    .css-input.time-period  {
+        margin-right: 0;
+    }
+
 }

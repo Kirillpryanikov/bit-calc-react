@@ -8,6 +8,7 @@ import {
     GET_DATA_FAIL,
     SHOW_DROPDOWN,
     HIDE_DROPDOWN,
+    SET_CURRENCY,
     GET_CURRENCIES_FAIL,
     GET_CURRENCIES_REQUEST,
     GET_CURRENCIES_SUCCESS
@@ -58,4 +59,8 @@ export const openDropdown = () => async (dispatch) => {
 
 export const closeDropdown = () => async (dispatch) => {
     dispatch(apiRequest(HIDE_DROPDOWN));
+}
+
+export const setCurrency = (id) => async (dispatch) => {
+    dispatch(apiSuccess(SET_CURRENCY, id));
 }

@@ -9,5 +9,6 @@ body {
   padding: 0;
   background-color: #FAFAFA;
   color: #424242;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  overflow-x: hidden;
 }
