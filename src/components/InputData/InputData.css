@@ -47,21 +47,48 @@
 
 .css-submit {
     position: relative;
+    width: 8.5rem;
     height: 100%;
     font-family: 'Nunito', sans-serif;
     font-weight: 600;
     color: #000000;
     font-size: .75rem;
     background: #FFD54F;
-    padding: 13px 20px;
     border: solid 1px #FFCA28;
     outline: none;
     text-decoration: none;
     transition: all .3s;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.css-submit-loader {
+    position: relative;
+    width: 8.5rem;
+    height: 100%;
+    background: #FFD54F;
+    border: solid 1px #FFCA28;
+    outline: none;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .css-submit:hover {
     background: #FFE082;
     text-decoration: none;
     border: solid 1px #FFD54F;
+}
+.input-error {
+    color: #F44336;
+    font-size: 0.76rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    height: 1.2rem;
 }

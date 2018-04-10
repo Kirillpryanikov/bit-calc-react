@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
     AreaChart,
     Area,
@@ -30,6 +31,10 @@ class Chart extends React.Component {
         this.props = props;
     }
 
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps);
+    }
+
     render() {
         return (
             <ResponsiveContainer>
@@ -56,4 +61,8 @@ class Chart extends React.Component {
     }
 }
 
-export default Chart;
+const mapStateToProps = state => ({
+    graph: state.calcData.graph
+});
+
+export default connect(mapStateToProps)(Chart);

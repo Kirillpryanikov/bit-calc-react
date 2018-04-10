@@ -1,17 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Dropdown from '../Dropdown/Dropdown';
+import {RedStar} from '../RedStar/RedStar';
+import { openDropdown, getCurrencies } from '../../store/actions/calcData';
 import './Results.css';
-import AngleDown from '../../icons/angle-down.svg';
 import AngleUp from '../../icons/angle-up.svg';
 
 const results = [{title: '', amount: 510}, {title: '', amount: 3510}, {title: 'EUR', amount: 15510}];
 
 class Results extends React.Component {
 
-    closeDropdown() {
-        console.log('closed')
+    constructor(props) {
+        super(props);
+        console.log('props ', props);
+        this.openDropdown = this.openDropdown.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.getCurrencies();
+    }
+
+    openDropdown() {
+        this.props.openDropdown();
     }
 
     render() {
+        console.log('isDropdownOpen', this.props.isDropdownOpen);
         return (
             <div className="input-flex-row half-container">
                 <Result {...results[0]}>
@@ -22,14 +36,18 @@ class Results extends React.Component {
                 </Result>
                 <Result {...results[2]}>
                     <div className="bottom-text">at current prices</div>
-                    <div className="css-input-title dropdown-trigger">Total BAY in </div>
+                    <div className="css-input-title dropdown-trigger">
+                        <span>Total BAY in {'EUR'}</span>
+                        <img onClick={this.openDropdown} className="dropdown-icon" width={24} height={24} color="#424242" src={`${AngleUp}`} alt=""/>
+                        <div className="star-outer"><RedStar/></div>
+                    </div>
 
-                        { true ?
-                            <div>
-                                <img className="dropdown-icon" width={24} height={24} color="#424242" src={`${AngleUp}`} alt=""/>
-                                <DropDown { ...this.props}/>
-                            </div> : null
+                    <div>
+                        { this.props.isDropdownOpen ?
+                            <Dropdown { ...this.props}/>  : null
                         }
+                    </div>
+
                 </Result>
             </div>
         )
@@ -52,30 +70,18 @@ class Result extends React.Component {
     }
 }
 
-class DropDown extends React.Component {
+const mapDispatchToProps = dispatch => ({
+    openDropdown: () => {
+        dispatch(openDropdown());
+    },
+    getCurrencies: () => {
+        dispatch(getCurrencies());
+    },
+});
 
-    constructor(props) {
-        super(props);
-        this.handleClose = this.handleClose.bind(this);
-        console.log(props);
-    }
+const mapStateToProps = state => ({
+    isDropdownOpen: state.calcData.isDropdownOpen,
+    currencies: state.calcData.currencies
+});
 
-    handleClose() {
-        this.props.closeDropdown()
-    }
-
-    render() {
-        return (
-            <div className="dropdown">
-                <div className="currency-name active">Cur 1
-                    <img onClick={this.handleClose} className="dropdown-icon" width={24} height={24} color="#424242" src={`${AngleDown}`} alt=""/>
-                </div>
-                <div className="currency-name">Cur 2</div>
-                <div className="currency-name">Cur 3</div>
-                <div className="currency-name">Cur 4</div>
-            </div>
-        )
-    }
-}
-
-export default Results;
+export default connect(mapStateToProps, mapDispatchToProps)(Results);
