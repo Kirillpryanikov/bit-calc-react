@@ -32,7 +32,7 @@ export default function (state = initialState, action) {
             };
         case GET_DATA_SUCCESS:
             const newGraph = action.payload.graph.map(item => {
-                item.date = moment(item.date).format('YY MMM');
+                item.date = moment(item.date).format('YY/MM');
                 return item;
             })
             return {

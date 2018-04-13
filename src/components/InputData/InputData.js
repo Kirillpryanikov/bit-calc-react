@@ -14,9 +14,9 @@ class InputData extends React.Component {
         this.sendData = this.sendData.bind(this);
         this.onInput = this.onInput.bind(this);
         this.state = {
-            BAYValue: '',
+            BAYValue: '10000',
             errorText: '',
-            yearsValue: '',
+            yearsValue: '5',
         }
     }
 
@@ -58,9 +58,9 @@ class InputData extends React.Component {
                 <div className="css-input-title">I own ... BAY and plan to hold for ... </div>
                 <form onSubmit={this.sendData} className="form-flex-row">
                     <div className="input-flex-row input">
-                        <input className={`css-input bay-amount ${this.state.errorText ? 'error' : ''}`} name="BAYValue" onChange={(event, newValue) => this.onInput(event, newValue)} type="text"/>
+                        <input className={`css-input bay-amount ${this.state.errorText ? 'error' : ''}`} name="BAYValue" value={this.state.BAYValue} onChange={(event) => this.onInput(event)} type="text"/>
                         <span className="bay-amount-abs">BAY</span>
-                        <input className={`css-input time-period ${this.state.errorText ? 'error' : ''}`} name="yearsValue" onChange={(event, newValue) => this.onInput(event, newValue)} type="text"/>
+                        <input className={`css-input time-period ${this.state.errorText ? 'error' : ''}`} name="yearsValue" value={this.state.yearsValue} onChange={(event) => this.onInput(event)} type="text"/>
                         <span className="time-period-abs">Years</span>
                     </div>
                     <div className="input-flex-row input">
