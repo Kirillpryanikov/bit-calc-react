@@ -21,7 +21,7 @@ class Chart extends React.Component {
     }
 
     render() {
-        return (
+        return this.props.graph.length ? (
             <ResponsiveContainer>
                 <AreaChart data={this.props.graph}
                            margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
@@ -35,14 +35,14 @@ class Chart extends React.Component {
                             <stop offset="95%" stopColor="#64FFDA" stopOpacity={0}/>
                         </linearGradient>
                     </defs>
-                    <XAxis tickLine={false} axisLine={false} dataKey="date" />
-                    <YAxis tickLine={false} domain={[dataMin => (Math.floor(dataMin - (dataMin/100))), dataMax => (Math.ceil(dataMax + (dataMax/100)))]} /> axisLine={false}/>
+                    <XAxis axisLine={false} dataKey="date" />
+                    <YAxis tickLine={false} axisLine={false} domain={[dataMin => (Math.floor(dataMin - (dataMin/100))), dataMax => (Math.ceil(dataMax + (dataMax/100)))]} />
                     <CartesianGrid  vertical={false} strokeDasharray="1 5" />
                     <Area type="monotone" dataKey="tc" stroke="#FFEB3B" strokeWidth={3} fillOpacity={.3} fill="url(#colorTC)" />
                     {/*<Area type="monotone" dataKey="sr" stroke="#64FFDA" strokeWidth={3} fillOpacity={.3} fill="url(#colorSR)" />*/}
                 </AreaChart>
             </ResponsiveContainer>
-        )
+        ) : null
     }
 }
 
