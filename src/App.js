@@ -10,7 +10,7 @@ import './App.css';
 
 const colorBars = [
     {colorR: '255', colorG: '235', colorB: '59', title: 'Total coins you own'},
-    {colorR: '100', colorG: '255', colorB: '218', title: 'Staking reward'},
+    //{colorR: '100', colorG: '255', colorB: '218', title: 'Staking reward'},
 ];
 
 const Toolbox = styled.div`
