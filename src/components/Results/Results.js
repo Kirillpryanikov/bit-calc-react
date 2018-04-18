@@ -48,7 +48,7 @@ class Results extends React.Component {
                     <div className="css-result">{this.props.total}</div>
                 </div>
 
-                {/*<div className="result-flex-column">
+                <div className="result-flex-column">
                     <div className="bottom-text">at current prices</div>
                     <div className="css-input-title dropdown-trigger">
                         <span>Total BAY in {this.state.currencyName}</span>
@@ -64,7 +64,7 @@ class Results extends React.Component {
 
                     <div className="css-result">{this.props.inCurrency}</div>
 
-                </div>*/}
+                </div>
 
             </div>
         )

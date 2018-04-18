@@ -1,4 +1,4 @@
-export const BASE_URL = '/api';
+export const BASE_URL = '/api'; //http://207.154.215.144:8080
 
 export const GET_DATA_REQUEST = 'GET_DATA_REQUEST';
 export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
