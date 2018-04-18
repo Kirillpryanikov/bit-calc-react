@@ -37,7 +37,8 @@
   flex-flow: row nowrap;
   justify-content: center;
   align-items: flex-start;
-  margin: 1rem auto;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 .App-chart-wrapper {
@@ -47,11 +48,8 @@
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  /*width: 90vw;
-  max-width: 60rem;*/
   height: 250px;
 }
-
-@media only screen and (max-width: 30rem) {
-
+.App-coins-data-wrapper {
+  margin-top: 2rem;
 }

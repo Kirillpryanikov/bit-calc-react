@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
+import CoinsData from './components/CoinsData/CoinsData';
 import {PageTitle} from './components/PageTitle/PageTitle';
 import InputData from './components/InputData/InputData';
 import Results from './components/Results/Results';
@@ -47,6 +47,9 @@ class App extends Component {
           </div>
           <div className="App-chart-wrapper">
             <Chart/>
+          </div>
+          <div className="App-coins-data-wrapper">
+            <CoinsData/>
           </div>
         </div>
       </div>
